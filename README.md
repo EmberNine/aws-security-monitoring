@@ -2,11 +2,11 @@
 
 This project configures real-time cloud security monitoring using native AWS services.
 
-## 🔐 Goal
+##  Goal
 
 Set up AWS Config, GuardDuty, SecurityHub, CloudTrail, and Lambda to build an end-to-end detection and alerting pipeline.
 
-## 🧰 Stack
+##  Stack
 
 - AWS Config
 - AWS GuardDuty
@@ -15,7 +15,7 @@ Set up AWS Config, GuardDuty, SecurityHub, CloudTrail, and Lambda to build an en
 - AWS Lambda (Python)
 - Optional: Terraform / AWS CLI
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 aws-security-monitoring/
@@ -25,7 +25,7 @@ aws-security-monitoring/
 ├── docs/                     # Architecture diagrams or notes
 ```
 
-## ⚙️ Setup Instructions
+##  Setup Instructions
 
 ### 1. Enable AWS Config
 
@@ -72,15 +72,15 @@ aws lambda create-function \
   --zip-file fileb://function.zip
 ```
 
-## 🚨 Optional Automation
+##  Optional Automation
 
 - Use EventBridge rules to invoke Lambda on GuardDuty/SecurityHub findings.
 - Terraform can be used for full automation (see `/terraform` folder).
 
-## 📸 Architecture
+##  Architecture
 
 ![Architecture](docs/architecture.png)
 
-## 📜 License
+##  License
 
 MIT
