@@ -1,16 +1,23 @@
 import json
 import boto3
+import os
 
 def lambda_handler(event, context):
     print("Event Received:", json.dumps(event))
 
-    message = f"Security Alert:\n{json.dumps(event['detail'], indent=2)}"
+    detail_type = event.get("detail-type", "Unknown")
+    detail = event.get("detail", {})
 
-    sns = boto3.client('sns')
+    message = {
+        "summary": f"AWS Security Alert: {detail_type}",
+        "detail": detail
+    }
+
+    sns = boto3.client("sns")
     sns.publish(
-        TopicArn='arn:aws:sns:us-east-1:123456789012:SecurityAlerts',
-        Message=message,
-        Subject='AWS Security Alert'
+        TopicArn=os.environ["SNS_TOPIC_ARN"],
+        Subject="AWS Security Alert",
+        Message=json.dumps(message, indent=2)
     )
 
-    return {"statusCode": 200}
+    return {"statusCode": 200, "body": "Alert sent"}
